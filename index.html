@@ -13,6 +13,7 @@
     <script src="./timer/timer.js"></script>
     <script src="jqm/jquery.min.js"></script>
     <script src="jqm/jquery.mobile-1.4.5.js"></script>
+    <script src="./index.js"></script>
   </head>
 
   <body>
@@ -23,7 +24,9 @@
       </div>
 
       <div role="main" class="ui-content">
-        <section class="center-vertical"></section>
+        <section class="center-vertical">
+          <a href="#list" class="small-text">Agregar item</a>
+        </section>
       </div>
 
       <div data-role="footer" class="center-vertical footer-style">
@@ -42,26 +45,37 @@
     <!-- List -->
     <div data-role="page" id="list">
       <div class="menu" data-role="header">
+        <div style="max-width: 30%">
+          <a href="#home" class="small-text">Back</a>
+        </div>
         <h3>Todo List</h3>
       </div>
 
-      <div role="main" class="ui-content">
-        <section>
-          <div
-            data-role="collapsibleset"
-            data-inset="false"
-            data-theme="b"
-            data-iconpos="right"
-          >
+      <div
+        role="main"
+        class="ui-content"
+        style="display: flex; justify-content: center"
+      >
+        <section style="width: 50%">
+          <a href="#add" class="title-e"> Agregar nuevo item</a>
+          <div data-role="collapsibleset" data-theme="b" data-iconpos="right">
             <div data-role="collapsible" data-collapsed="false">
               <!-- Esta info se va a inyectar dinámicamente -->
               <h3 class="date-text">Fecha dinámica</h3>
               <div class="item-set-container">
                 <div class="item-container">
                   <p class="item">Todo 1</p>
+                  <div>
+                    <p class="item">Editar</p>
+                    <p class="item">Borrar</p>
+                  </div>
                 </div>
                 <div class="item-container">
                   <p class="item">Todo 2</p>
+                  <div>
+                    <p class="item">Editar</p>
+                    <p class="item">Borrar</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -70,9 +84,17 @@
               <div class="item-set-container">
                 <div class="item-container">
                   <p class="item">Todo 1</p>
+                  <div>
+                    <p class="item">Editar</p>
+                    <p class="item">Borrar</p>
+                  </div>
                 </div>
                 <div class="item-container">
                   <p class="item">Todo 2</p>
+                  <div>
+                    <p class="item">Editar</p>
+                    <p class="item">Borrar</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -96,6 +118,9 @@
     <!-- Agregar item -->
     <div data-role="page" id="add">
       <div class="menu" data-role="header">
+        <div style="max-width: 30%">
+          <a href="#list" class="small-text">Back</a>
+        </div>
         <h3>Agregar nueva tarea</h3>
       </div>
 

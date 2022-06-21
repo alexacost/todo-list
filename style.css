@@ -147,8 +147,8 @@ a {
 .menu {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: center !important;
+  align-items: center !important;
   padding: 0.5rem 1rem;
 }
 
@@ -207,25 +207,6 @@ a {
 .image-full {
   width: 100%;
   margin: 2rem;
-}
-.map-full {
-  width: 100%;
-  margin: 2rem;
-}
-
-.location-container {
-  width: 100%;
-  margin: 1.5rem 0;
-}
-.location-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  align-items: center;
-}
-.location-item img {
-  width: 20px;
-  margin: 0 10px;
 }
 
 .nav-modal {
