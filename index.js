@@ -15,9 +15,17 @@ $(document).on("ready", function () {
 
   $("#saveTodo").on("click", function addItem() {
     let inputText = $("#inputText").val();
+    addItemToLocalStorage(inputText);
+    showTodos();
+    $.mobile.navigate("#home");
+    $("#inputText").val("");
+    
+  });
+
+  $("#updateTodo").on("click", function addItem() {
+    let inputText = $("#inputText").val();
     let id = $("#inputText").attr("data-id")
     console.log(id)
-    // addItemToLocalStorage(inputText);
     editItemOnLocalStorage(inputText,id);
     showTodos();
     $.mobile.navigate("#home");
@@ -83,7 +91,7 @@ function showTodos() {
     $("#todos").append(
       `<div class="todoContainer">
       <p style='color:white'>${value}</p>
-      <div class="buttonsContainer"> <a data-value="${value}" data-id="${index}" class="edit">Editar</a><a class="delete">Borrar</a></div>
+      <div class="buttonsContainer"> <a href="#editar" data-value="${value}" data-id="${index}" class="edit">Editar</a><a class="delete">Borrar</a></div>
       </div>`
     );
   });
