@@ -53,6 +53,11 @@ function showTodos() {
   }
   $("#todos").empty();
   $.each(todos, function (index, value) {
-    $("#todos").append(`<div><p style='color:white'>${value}</p></div>`);
+    $("#todos").append(
+      `<div class="todoContainer">
+      <p style='color:white'>${value}</p>
+      <div class="buttonsContainer"><button class="buttonPersonalised">Editar</button><button class="buttonPersonalised">Borrar</button></div>
+      </div>`
+    );
   });
 }

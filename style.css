@@ -454,3 +454,30 @@ a {
     min-width: 40% !important;
   }
 }
+
+/* Estilos nuevos */
+#todos {
+  width: 80%;
+}
+.todoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: black;
+  width: 100%;
+}
+.buttonPersonalised {
+  background-color: white;
+  color: black;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+}
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
