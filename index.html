@@ -25,7 +25,10 @@
 
       <div role="main" class="ui-content">
         <section class="center-vertical">
-          <a href="#list" class="small-text">Agregar item</a>
+          <a href="#add" class="small-text">Agregar item</a>
+        </section>
+        <section class="center-vertical">
+          <div id="todos"></div>
         </section>
       </div>
 
@@ -42,96 +45,21 @@
     </div>
     <!-- Fin home -->
 
-    <!-- List -->
-    <div data-role="page" id="list">
-      <div class="menu" data-role="header">
-        <div style="max-width: 30%">
-          <a href="#home" class="small-text">Back</a>
-        </div>
-        <h3>Todo List</h3>
-      </div>
-
-      <div
-        role="main"
-        class="ui-content"
-        style="display: flex; justify-content: center"
-      >
-        <section style="width: 50%">
-          <a href="#add" class="title-e"> Agregar nuevo item</a>
-          <div data-role="collapsibleset" data-theme="b" data-iconpos="right">
-            <div data-role="collapsible" data-collapsed="false">
-              <!-- Esta info se va a inyectar dinámicamente -->
-              <h3 class="date-text">Fecha dinámica</h3>
-              <div class="item-set-container">
-                <div class="item-container">
-                  <p class="item">Todo 1</p>
-                  <div>
-                    <p class="item">Editar</p>
-                    <p class="item">Borrar</p>
-                  </div>
-                </div>
-                <div class="item-container">
-                  <p class="item">Todo 2</p>
-                  <div>
-                    <p class="item">Editar</p>
-                    <p class="item">Borrar</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div data-role="collapsible" data-collapsed="false">
-              <h3 class="date-text">Fecha dinámica</h3>
-              <div class="item-set-container">
-                <div class="item-container">
-                  <p class="item">Todo 1</p>
-                  <div>
-                    <p class="item">Editar</p>
-                    <p class="item">Borrar</p>
-                  </div>
-                </div>
-                <div class="item-container">
-                  <p class="item">Todo 2</p>
-                  <div>
-                    <p class="item">Editar</p>
-                    <p class="item">Borrar</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <div data-role="footer" class="center-vertical footer-style">
-        <div>
-          <a href="modal.html" data-dialog="true" data-transition="pop"
-            ><button class="button pop">Creadores</button></a
-          >
-        </div>
-        <div>
-          <p class="small-text">Designed by Dreamteam</p>
-        </div>
-      </div>
-    </div>
-    <!-- Fin List -->
-
     <!-- Agregar item -->
     <div data-role="page" id="add">
       <div class="menu" data-role="header">
         <div style="max-width: 30%">
-          <a href="#list" class="small-text">Back</a>
+          <a href="#home" class="small-text">Back</a>
         </div>
         <h3>Agregar nueva tarea</h3>
       </div>
 
       <div role="main" class="ui-content">
         <section>
-          <h3>Fecha</h3>
-          <div>Acá va un date picker</div>
-          <input type="text" maxlength="200" />
+          <input id="inputText" type="text" maxlength="200" />
           <div>
-            <a>Guardar</a>
-            <a>Cancelar</a>
+            <a id="saveTodo"><button>Guardar</button></a>
+            <a id="cancel">Cancelar</a>
           </div>
         </section>
       </div>
