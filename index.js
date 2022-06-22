@@ -19,6 +19,16 @@ $(document).on("ready", function () {
     $("#inputText").val("");
     $.mobile.navigate("#home");
   });
+
+  // ale's code
+  
+  $(".edit").on("click", function() {
+    let editItem = $(this).attr("data-value")
+    $.mobile.navigate("#add");
+    $("#inputText").val(editItem)
+  })
+
+
 });
 
 function addItemToLocalStorage(inputText) {
@@ -56,7 +66,7 @@ function showTodos() {
     $("#todos").append(
       `<div class="todoContainer">
       <p style='color:white'>${value}</p>
-      <div class="buttonsContainer"><button class="buttonPersonalised">Editar</button><button class="buttonPersonalised">Borrar</button></div>
+      <div class="buttonsContainer"> <a data-value="${value}" class="edit">Editar</a><a class="delete">Borrar</a></div>
       </div>`
     );
   });
