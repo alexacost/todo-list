@@ -2,17 +2,27 @@ $(document).on("pagecreate", function () {});
 
 function removeItem() {}
 
-function editItem() {}
+function editItemOnLocalStorage(inputText,id) {
+  let todos = getItemFromLocalStorage()
+  todos[id] = inputText
+  localStorage.removeItem("todos")
+  localStorage.setItem("todos",toJson(todos))
+  return;
+}
 
 $(document).on("ready", function () {
   showTodos();
 
   $("#saveTodo").on("click", function addItem() {
     let inputText = $("#inputText").val();
-    addItemToLocalStorage(inputText);
+    let id = $("#inputText").attr("data-id")
+    console.log(id)
+    // addItemToLocalStorage(inputText);
+    editItemOnLocalStorage(inputText,id);
     showTodos();
     $.mobile.navigate("#home");
     $("#inputText").val("");
+    
   });
 
   $("#cancel").on("click", function () {
@@ -22,12 +32,19 @@ $(document).on("ready", function () {
 
   // ale's code
   
-  $(".edit").on("click", function() {
+  $(".edit").on("click", function () {
     let editItem = $(this).attr("data-value")
+    let id = $(this).attr("data-id")
     $.mobile.navigate("#add");
     $("#inputText").val(editItem)
-  })
+    oldId = $("#inputText").attr("data-id",id)
+    oldId = id
+    console.log(oldId)
+    
+     
+    
 
+  })
 
 });
 
@@ -66,7 +83,7 @@ function showTodos() {
     $("#todos").append(
       `<div class="todoContainer">
       <p style='color:white'>${value}</p>
-      <div class="buttonsContainer"> <a data-value="${value}" class="edit">Editar</a><a class="delete">Borrar</a></div>
+      <div class="buttonsContainer"> <a data-value="${value}" data-id="${index}" class="edit">Editar</a><a class="delete">Borrar</a></div>
       </div>`
     );
   });
