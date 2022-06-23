@@ -13,6 +13,10 @@ function editItemOnLocalStorage(inputText,id) {
 $(document).on("ready", function () {
   showTodos();
 
+  $("#add").on("click", function (){
+    console.log("hola")
+  })
+  
   $("#saveTodo").on("click", function addItem() {
     let inputText = $("#inputText").val();
     addItemToLocalStorage(inputText);
