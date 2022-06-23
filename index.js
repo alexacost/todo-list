@@ -95,7 +95,7 @@ function showTodos() {
     $("#todos").append(
       `<div class="todoContainer">
       <p style='color:white'>${value}</p>
-      <div class="buttonsContainer"> <a href="#editar" data-value="${value}" data-id="${index}" class="edit">Editar</a><a class="delete">Borrar</a></div>
+      <div class="buttonsContainer"> <a href="#" data-value="${value}" data-id="${index}" class="edit">Editar</a><a class="delete">Borrar</a></div>
       </div>`
     );
   });
