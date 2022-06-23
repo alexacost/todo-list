@@ -14,7 +14,7 @@ $(document).on("ready", function () {
   showTodos();
 
   $("#add").on("click", function (){
-    console.log("hola")
+    $("#updateTodo").hide()
   })
   
   $("#saveTodo").on("click", function addItem() {
@@ -40,9 +40,14 @@ $(document).on("ready", function () {
   $("#cancel").on("click", function () {
     $("#inputText").val("");
     $.mobile.navigate("#home");
-  });
+    if ($("#saveTodo").hide()) {
+      $("#saveTodo").show()
+    } 
+    if ($("#updateTodo").hide()) {
+      $("#updateTodo").show()
+    } 
 
-  // ale's code
+  });
   
   $(".edit").on("click", function () {
     let editItem = $(this).attr("data-value")
@@ -52,10 +57,7 @@ $(document).on("ready", function () {
     oldId = $("#inputText").attr("data-id",id)
     oldId = id
     console.log(oldId)
-    
-     
-    
-
+    $("#saveTodo").hide()
   })
 
 });
@@ -95,7 +97,7 @@ function showTodos() {
     $("#todos").append(
       `<div class="todoContainer">
       <p style='color:white'>${value}</p>
-      <div class="buttonsContainer"> <a href="#editar" data-value="${value}" data-id="${index}" class="edit">Editar</a><a class="delete">Borrar</a></div>
+      <div class="buttonsContainer"> <a href="#add" data-value="${value}" data-id="${index}" class="edit">Editar</a><a class="delete">Borrar</a></div>
       </div>`
     );
   });
