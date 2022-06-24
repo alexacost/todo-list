@@ -21,7 +21,6 @@ $(document).on("ready", function () {
     let inputText = $("#inputText").val();
     addItemToLocalStorage(inputText);
     showTodos();
-    $.mobile.navigate("#home");
     $("#inputText").val("");
     
   });
@@ -32,7 +31,6 @@ $(document).on("ready", function () {
     console.log(id)
     editItemOnLocalStorage(inputText,id);
     showTodos();
-    $.mobile.navigate("#home");
     $("#inputText").val("");
     
   });
@@ -52,11 +50,11 @@ $(document).on("ready", function () {
   $(".edit").on("click", function () {
     let editItem = $(this).attr("data-value")
     let id = $(this).attr("data-id")
-    $.mobile.navigate("#add");
     $("#inputText").val(editItem)
     oldId = $("#inputText").attr("data-id",id)
     oldId = id
     console.log(oldId)
+    $.mobile.navigate("#add");
     $("#saveTodo").hide()
   })
 
@@ -96,9 +94,21 @@ function showTodos() {
   $.each(todos, function (index, value) {
     $("#todos").append(
       `<div class="todoContainer">
-      <p style='color:white'>${value}</p>
-      <div class="buttonsContainer"> <a href="#add" data-value="${value}" data-id="${index}" class="edit">Editar</a><a class="delete">Borrar</a></div>
+      <p style='color:white' clas>${value}</p>
+      <div class="buttonsContainer"> <button data-value="${value}" data-id="${index}" class="edit edit ui-btn ui-shadow ui-corner-all">Editar</button><button class="delete ui-btn ui-shadow ui-corner-all">Borrar</button></div>
       </div>`
     );
+    
   });
+
+if (!localStorage.getItem("reload")) {
+  
+  localStorage.setItem("reload", "true");
+  location.reload();
+}
+
+else {
+  localStorage.removeItem("reload");
+  
+}
 }
