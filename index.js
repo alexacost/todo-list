@@ -3,6 +3,7 @@ $(document).on("pagecreate", function () {});
 
 $(document).on("ready", function () {
   showTodos();
+  
 
   $("#add").on("click", function (){
     $("#updateTodo").hide()
@@ -95,7 +96,7 @@ function removeItem(id) {
   localStorage.setItem("todos",toJson(todos))
   reloadPage()
   }
-
+  reloadPage()
   return;
 }
 
@@ -143,6 +144,7 @@ function showTodos() {
     return $("#todos").append(
       "<div><p style='color:white'>No hay ningun todo!</p></div>"
     );
+      
   }
   $("#todos").empty();
   $.each(todos, function (index, value) {
