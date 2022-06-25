@@ -1,14 +1,5 @@
 $(document).on("pagecreate", function () {});
 
-function removeItem() {}
-
-function editItemOnLocalStorage(inputText,id) {
-  let todos = getItemFromLocalStorage()
-  todos[id] = inputText
-  localStorage.removeItem("todos")
-  localStorage.setItem("todos",toJson(todos))
-  return;
-}
 
 $(document).on("ready", function () {
   showTodos();
@@ -58,6 +49,16 @@ $(document).on("ready", function () {
     $("#saveTodo").hide()
   })
 
+  $(".delete").on("click", function () {
+    let editItem = $(this).attr("data-value")
+    let id = $(this).attr("data-id")
+    $("#inputText").val(editItem)
+    oldId = $("#inputText").attr("data-id",id)
+    oldId = id
+    console.log(oldId)
+    removeItem(inputText,id);
+  })
+
 });
 
 function addItemToLocalStorage(inputText) {
@@ -71,6 +72,41 @@ function addItemToLocalStorage(inputText) {
   todos.push(inputText);
   localStorage.setItem("todos", toJson(todos));
 }
+
+function removeItem(inputText,id) {
+  let todos = getItemFromLocalStorage()
+  for( let i = 0; i < todos.length; i++){ 
+    
+    if ( todos[i] === todos[id]) { 
+
+        todos.splice(i, 1); 
+    }
+
+}
+
+localStorage.removeItem("todos")
+localStorage.setItem("todos",toJson(todos))
+if (!localStorage.getItem("reload")) {
+  
+  localStorage.setItem("reload", "true");
+  location.reload();
+}
+
+else {
+  localStorage.removeItem("reload");
+  
+}
+  return;
+}
+
+function editItemOnLocalStorage(inputText,id) {
+  let todos = getItemFromLocalStorage()
+  todos[id] = inputText
+  localStorage.removeItem("todos")
+  localStorage.setItem("todos",toJson(todos))
+  return;
+}
+
 
 function toJson(arr) {
   return JSON.stringify(arr);
@@ -95,7 +131,7 @@ function showTodos() {
     $("#todos").append(
       `<div class="todoContainer">
       <p style='color:white' clas>${value}</p>
-      <div class="buttonsContainer"> <button data-value="${value}" data-id="${index}" class="edit edit ui-btn ui-shadow ui-corner-all">Editar</button><button class="delete ui-btn ui-shadow ui-corner-all">Borrar</button></div>
+      <div class="buttonsContainer"> <button data-value="${value}" data-id="${index}" class="edit edit ui-btn ui-shadow ui-corner-all">Editar</button><button data-value="${value}" data-id="${index}" class="delete ui-btn ui-shadow ui-corner-all">Borrar</button></div>
       </div>`
     );
     
