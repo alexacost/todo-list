@@ -86,16 +86,7 @@ function removeItem(inputText,id) {
 
 localStorage.removeItem("todos")
 localStorage.setItem("todos",toJson(todos))
-if (!localStorage.getItem("reload")) {
-  
-  localStorage.setItem("reload", "true");
-  location.reload();
-}
-
-else {
-  localStorage.removeItem("reload");
-  
-}
+reloadPage()
   return;
 }
 
@@ -107,6 +98,18 @@ function editItemOnLocalStorage(inputText,id) {
   return;
 }
 
+function reloadPage() {
+  if (!localStorage.getItem("reload")) {
+  
+    localStorage.setItem("reload", "true");
+    location.reload();
+  }
+  
+  else {
+    localStorage.removeItem("reload");
+    
+  }
+}
 
 function toJson(arr) {
   return JSON.stringify(arr);
@@ -136,15 +139,5 @@ function showTodos() {
     );
     
   });
-
-if (!localStorage.getItem("reload")) {
-  
-  localStorage.setItem("reload", "true");
-  location.reload();
-}
-
-else {
-  localStorage.removeItem("reload");
-  
-}
+  reloadPage()
 }
