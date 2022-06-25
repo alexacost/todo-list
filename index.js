@@ -3,6 +3,7 @@ $(document).on("pagecreate", function () {});
 
 $(document).on("ready", function () {
   showTodos();
+  
 
   $("#add").on("click", function (){
     $("#updateTodo").hide()
@@ -78,10 +79,6 @@ function addItemToLocalStorage(inputText) {
 //eliminado de item
 function removeItem(id) {
   let todos = getItemFromLocalStorage()
-  if (todos.length === 1) {
-    localStorage.removeItem("todos")
-    reloadPage()
-  } else {
     for( let i = 0; i < todos.length; i++){ 
     
       if ( todos[i] === todos[id]) { 
@@ -90,12 +87,9 @@ function removeItem(id) {
       }
   
   }
-  
   localStorage.removeItem("todos")
   localStorage.setItem("todos",toJson(todos))
   reloadPage()
-  }
-
   return;
 }
 
@@ -143,6 +137,7 @@ function showTodos() {
     return $("#todos").append(
       "<div><p style='color:white'>No hay ningun todo!</p></div>"
     );
+      
   }
   $("#todos").empty();
   $.each(todos, function (index, value) {
