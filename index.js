@@ -56,7 +56,7 @@ $(document).on("ready", function () {
     oldId = $("#inputText").attr("data-id",id)
     oldId = id
     console.log(oldId)
-    removeItem(inputText,id);
+    removeItem(id);
   })
 
 });
@@ -76,20 +76,26 @@ function addItemToLocalStorage(inputText) {
 
 
 //eliminado de item
-function removeItem(inputText,id) {
+function removeItem(id) {
   let todos = getItemFromLocalStorage()
-  for( let i = 0; i < todos.length; i++){ 
+  if (todos.length === 1) {
+    localStorage.removeItem("todos")
+    reloadPage()
+  } else {
+    for( let i = 0; i < todos.length; i++){ 
     
-    if ( todos[i] === todos[id]) { 
+      if ( todos[i] === todos[id]) { 
+  
+          todos.splice(i, 1); 
+      }
+  
+  }
+  
+  localStorage.removeItem("todos")
+  localStorage.setItem("todos",toJson(todos))
+  reloadPage()
+  }
 
-        todos.splice(i, 1); 
-    }
-
-}
-
-localStorage.removeItem("todos")
-localStorage.setItem("todos",toJson(todos))
-reloadPage()
   return;
 }
 
