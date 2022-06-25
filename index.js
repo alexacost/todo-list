@@ -61,6 +61,7 @@ $(document).on("ready", function () {
 
 });
 
+// creacion de item
 function addItemToLocalStorage(inputText) {
   let todos = getItemFromLocalStorage();
   if (!todos) {
@@ -73,6 +74,8 @@ function addItemToLocalStorage(inputText) {
   localStorage.setItem("todos", toJson(todos));
 }
 
+
+//eliminado de item
 function removeItem(inputText,id) {
   let todos = getItemFromLocalStorage()
   for( let i = 0; i < todos.length; i++){ 
@@ -90,6 +93,7 @@ reloadPage()
   return;
 }
 
+//edición de item
 function editItemOnLocalStorage(inputText,id) {
   let todos = getItemFromLocalStorage()
   todos[id] = inputText
@@ -98,6 +102,7 @@ function editItemOnLocalStorage(inputText,id) {
   return;
 }
 
+//recarga de página forzada
 function reloadPage() {
   if (!localStorage.getItem("reload")) {
   
@@ -111,16 +116,20 @@ function reloadPage() {
   }
 }
 
+
+//stringify
 function toJson(arr) {
   return JSON.stringify(arr);
 }
 
+//obtener items del localstorage
 function getItemFromLocalStorage() {
   let todos = window.localStorage.getItem("todos");
   if (!todos) return;
   return JSON.parse(todos);
 }
 
+//mostrar items
 function showTodos() {
   let todos = getItemFromLocalStorage();
   console.log(todos);
